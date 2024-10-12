@@ -8,22 +8,20 @@ const port = 5500;
 app.use(express.json());
 routes(app);
 
-// app.post("/login", (req, res) => {
-//     const { username, password } = req.body;
+app.post("/", (req, res) => {
+    res.json({message: "Welcome to server of Backend ni Joedel"})
 
-//     console.log(username, password);
+    // const foundUser = users.find(
+    //     (u) => u.user === username && u.pass === password,
+    // );
 
-//     // const foundUser = users.find(
-//     //     (u) => u.user === username && u.pass === password,
-//     // );
-
-//     // if (foundUser) {
-//     //     console.log("\x1b[30m\x1b[47m%s\x1b[0m", "Great! User authenticated.");
-//     //     return res.json({ message: "Login Successful", userId: foundUser.id });
-//     // } else {
-//     //     console.log("Invalid username or password.");
-//     // }
-// });
+    // if (foundUser) {
+    //     console.log("\x1b[30m\x1b[47m%s\x1b[0m", "Great! User authenticated.");
+    //     return res.json({ message: "Login Successful", userId: foundUser.id });
+    // } else {
+    //     console.log("Invalid username or password.");
+    // }
+});
 
 app.listen(port, (err) => {
     if (err) throw err;
