@@ -19,11 +19,6 @@ const mydb = mysql.createConnection({
 
 mydb.connect((err) => {
     if (err) {
-        console.log(process.env.DB_HOST);
-        console.log(process.env.DB_USER);
-        console.log(process.env.DB_PASSWORD);
-        console.log(process.env.DB_DATABASE);
-        console.log(process.env.DB_PORT);
         console.log("\n🚧 Error: Not connected to MySQL Database:");
         console.log("   | - If it's not Connected ");
         console.log("   | - Check if MySQL and APACHE is turned off.\n ");
