@@ -8,8 +8,6 @@ const port = 5500;
 app.use(express.json());
 routes(app);
 
-const paymongo = require("paymongo-node")("your secret api key");
-
 // app.post("/login", (req, res) => {
 //     const { username, password } = req.body;
 
