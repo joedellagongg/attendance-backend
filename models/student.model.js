@@ -2,14 +2,13 @@ const database = require("../db");
 
 async function getStudents() {
     const fetch = "SELECT * FROM studuser";
-    return new Promise((resolve, reject) => {
-        database.query(fetch, (err, results) => {
-            if (err) {
-                return reject(err);
-            }
-            resolve(results);
-        });
-    });
+    try {
+        const [results] = await database.query(fetch); // Await the promise returned by query
+        return results; // Return the results directly
+    } catch (err) {
+        console.error("Error fetching students:", err);
+        throw err; // Rethrow the error to be handled by the caller
+    }
 }
 
 const mydb = require("mysql2/promise");
