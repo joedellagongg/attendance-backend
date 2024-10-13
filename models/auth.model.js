@@ -20,7 +20,7 @@ async function authLogin(data) {
             token: token,
         };
     } else {
-        console.log("err");
+        console.log(err);
     }
 }
 
