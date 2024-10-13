@@ -11,7 +11,7 @@ async function getStudents() {
     }
 }
 
-const mydb = require("mysql2/promise");
+// const mydb = require("mysql2/promise");
 
 async function addStudent(data) {
     const {
@@ -38,7 +38,7 @@ async function addStudent(data) {
     const query = `INSERT INTO studuser (nfc_id, username, password, lname, fname, mname, age, birthday, gender, address, email, father, mother, guardian, studcontact, fathercontact, mothercontact, guardiancontact) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
 
     try {
-        const result = await mydb.execute(query, [
+        const result = await database.execute(query, [
             NFCid,
             uname,
             upass,
