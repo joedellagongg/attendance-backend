@@ -12,6 +12,8 @@ async function getStudents() {
     });
 }
 
+const mydb = require("mysql2/promise");
+
 async function addStudent(data) {
     const {
         NFCid,
@@ -34,10 +36,10 @@ async function addStudent(data) {
         guardianContact,
     } = data;
 
-    const query = `INSERT INTO studuser(nfc_id, username, password, lname, fname, mname, age, birthday, gender, address, email, father, mother, guardian, studcontact, fathercontact, mothercontact, guardiancontact) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+    const query = `INSERT INTO studuser (nfc_id, username, password, lname, fname, mname, age, birthday, gender, address, email, father, mother, guardian, studcontact, fathercontact, mothercontact, guardiancontact) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
 
     try {
-        const result = await database.query(query, [
+        const result = await mydb.execute(query, [
             NFCid,
             uname,
             upass,
@@ -57,7 +59,6 @@ async function addStudent(data) {
             motherContact,
             guardianContact,
         ]);
-
         console.log("Student added:", result);
         return result;
     } catch (error) {
@@ -65,6 +66,60 @@ async function addStudent(data) {
         throw error;
     }
 }
+
+// async function addStudent(data) {
+//     const {
+//         NFCid,
+//         uname,
+//         upass,
+//         lastName,
+//         firstName,
+//         middleName,
+//         Age,
+//         Birthday,
+//         Gender,
+//         Address,
+//         emailAddress,
+//         fatherName,
+//         motherName,
+//         guardianName,
+//         studentContact,
+//         fatherContact,
+//         motherContact,
+//         guardianContact,
+//     } = data;
+
+//     const query = `INSERT INTO studuser(nfc_id, username, password, lname, fname, mname, age, birthday, gender, address, email, father, mother, guardian, studcontact, fathercontact, mothercontact, guardiancontact) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+
+//     try {
+//         const result = await database.query(query, [
+//             NFCid,
+//             uname,
+//             upass,
+//             lastName,
+//             firstName,
+//             middleName,
+//             Age,
+//             Birthday,
+//             Gender,
+//             Address,
+//             emailAddress,
+//             fatherName,
+//             motherName,
+//             guardianName,
+//             studentContact,
+//             fatherContact,
+//             motherContact,
+//             guardianContact,
+//         ]);
+
+//         console.log("Student added:", result);
+//         return result;
+//     } catch (error) {
+//         console.error("Error adding student:", error);
+//         throw error;
+//     }
+// }
 
 module.exports = {
     getStudents,
