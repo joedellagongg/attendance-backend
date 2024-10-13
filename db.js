@@ -21,7 +21,7 @@ async function databaseInitiator() {
     }
 }
 
-module.exports = databaseInitiator;
+module.exports = databaseInitiator();
 
 // const mydb = mysql.createConnection({
 //     host: process.env.DB_HOST,
