@@ -11,7 +11,7 @@ async function getStudents() {
     }
 }
 
-const mydb = require("mysql2/promise");
+// const mydb = require("mysql2/promise");
 
 async function addStudent(data) {
     const {
