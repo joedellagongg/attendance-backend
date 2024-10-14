@@ -4,7 +4,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
     console.log("You are in a main server endpoint");
     res.json({
-        message: "Hello! I'm Main, main server endpoint",
+        message: "This server endpoint is for Thesis Purposes Only.",
     });
 });
 

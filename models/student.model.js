@@ -3,11 +3,11 @@ const database = require("../db");
 async function getStudents() {
     const fetch = "SELECT * FROM studuser";
     try {
-        const [results] = await database.query(fetch); // Await the promise returned by query
-        return results; // Return the results directly
+        const [results] = await database.query(fetch); 
+        return results; 
     } catch (err) {
         console.error("Error fetching students:", err);
-        throw err; // Rethrow the error to be handled by the caller
+        throw err;
     }
 }
 

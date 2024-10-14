@@ -12,6 +12,8 @@ const corsSetting = {
     origin: "http://localhost:3000",
 };
 
+// ORIGIN: Galing Front-end
+
 const registeredRoute = (app) => {
     app.use(cors(corsSetting));
     app.use("/", main);
