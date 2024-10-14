@@ -14,7 +14,7 @@ exports.authentication = async function (req, res) {
         res.status(200).json({
             message:
                 "From: [ LOGIN == CONTROLLERS ], Login added to authentication",
-            authenticated: true,
+            // authenticated: true,
         });
     } catch (err) {
         res.status(500).json({

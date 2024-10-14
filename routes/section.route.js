@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-const studentController = require("../controllers/student.controllers");
+const sectionController = require("../controllers/section.controllers");
 
-router.get("/", studentController.getStudent);
-// router.post("/", studentController.addStudent);
+router.get("/", sectionController.getSection);
+router.post("/", sectionController.addSection);
 
 module.exports = router;

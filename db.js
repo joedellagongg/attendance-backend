@@ -2,12 +2,19 @@ const mysql = require("mysql2/promise");
 const dotenv = require("dotenv");
 dotenv.config();
 
+// const mydb = mysql.createPool({
+//     host: process.env.DB_HOST,
+//     user: process.env.DB_USER,
+//     password: process.env.DB_PASSWORD,
+//     database: process.env.DB_DATABASE || "dbsts",
+//     port: process.env.PORT || 15662,
+// });
+
 const mydb = mysql.createPool({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE || "dbsts",
-    port: process.env.PORT || 15662,
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "attendance_cashless",
 });
 
 console.log("\x1b[32m%s\x1b[0m", "  ▲", "[ DATABASE ] Connected!");
