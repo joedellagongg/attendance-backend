@@ -16,7 +16,7 @@ async function getStudentsbyID(id) {
 
     console.log("STUDENT GET 1 MODEL: ", id);
 
-    const fetch = `SELECT * FROM studuser WHERE section_id = ?`;
+    const fetch = `SELECT * FROM studuser WHERE student_id = ?`;
 
     try {
         const result = await database.query(fetch, [id]);
