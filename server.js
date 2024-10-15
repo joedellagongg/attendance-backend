@@ -8,20 +8,27 @@ const port = 5500;
 app.use(express.json());
 routes(app);
 
-app.post("/", (req, res) => {
-    res.json({message: "Welcome to server of Backend ni Joedel"})
+// app.get("/samplelink/:id", async (req, res) => {
+//     const { id } = req.params;
 
-    // const foundUser = users.find(
-    //     (u) => u.user === username && u.pass === password,
-    // );
+//     console.log(id);
 
-    // if (foundUser) {
-    //     console.log("\x1b[30m\x1b[47m%s\x1b[0m", "Great! User authenticated.");
-    //     return res.json({ message: "Login Successful", userId: foundUser.id });
-    // } else {
-    //     console.log("Invalid username or password.");
-    // }
-});
+//     const fetch = `SELECT * FROM studuser WHERE student_id = ?`;
+
+//     try {
+//         const result = await database.query(fetch, [id]);
+//         console.log(result);
+//         res.status(200).json({
+//             message: "OKAY",
+//             // data: result,
+//         });
+//     } catch (error) {
+//         res.status(500).json({
+//             message: "BAD",
+//             data: error,
+//         });
+//     }
+// });
 
 app.listen(port, (err) => {
     if (err) throw err;

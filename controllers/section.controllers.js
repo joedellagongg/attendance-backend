@@ -6,7 +6,7 @@ exports.getSection = async function (req, res) {
         res.json(students);
     } catch (error) {
         res.status(500).json({
-            error: "From: [ CONTROLLERS ], Failed to retrieve sections",
+            error: "From: [ GET SECTION CONTROLLERS ], Failed to retrieve sections",
         });
     }
 };

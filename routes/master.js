@@ -20,6 +20,7 @@ const registeredRoute = (app) => {
     app.use("/login", loginRoute);
     app.use("/add_student", studentRoute);
     app.use("/student_list", studentRoute);
+    app.use("/student_list/:id", studentRoute);
     app.use("/get_section", sectionRoute);
     app.use("/add_section", sectionRoute);
 };

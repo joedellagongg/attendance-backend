@@ -6,7 +6,7 @@ const studentModel = require("../models/student.model");
 
 exports.authentication = async function (req, res) {
     const { username, password } = req.body;
-    // console.log(username, password);
+    console.log("CONTROLLERS", username, password);
     const data = req.body;
 
     try {
@@ -14,7 +14,7 @@ exports.authentication = async function (req, res) {
         res.status(200).json({
             message:
                 "From: [ LOGIN == CONTROLLERS ], Login added to authentication",
-            // authenticated: true,
+            authenticated: true,
         });
     } catch (err) {
         res.status(500).json({
