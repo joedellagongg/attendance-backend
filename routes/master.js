@@ -22,6 +22,7 @@ const registeredRoute = (app) => {
     app.use("/student_list", studentRoute);
     app.use("/student_list/:id", studentRoute);
     app.use("/get_section", sectionRoute);
+    app.use("/get_section/:id", sectionRoute);
     app.use("/add_section", sectionRoute);
 };
 

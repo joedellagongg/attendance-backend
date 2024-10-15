@@ -14,6 +14,20 @@ exports.getSections = async function (req, res) {
     }
 };
 
+exports.getSectionbyID = async function (req, res) {
+    const { id } = req.params;
+    console.log(id);
+    try {
+        const section = await sections.getSectionbyID(id);
+        res.json(section);
+        console.log(section);
+    } catch (error) {
+        res.status(500).json({
+            error: "From: [ GET SECTION BY ID CONTROLLERS ], Failed to retrieve sections",
+        });
+    }
+};
+
 exports.addSection = async function (req, res) {
     const data = req.body;
     try {

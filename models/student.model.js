@@ -12,9 +12,11 @@ async function getStudents() {
 }
 
 async function getStudentsbyID(id) {
+    // const { id } = data;
+
     console.log("STUDENT GET 1 MODEL: ", id);
 
-    const fetch = `SELECT * FROM studuser WHERE student_id = ?`;
+    const fetch = `SELECT * FROM studuser WHERE section_id = ?`;
 
     try {
         const result = await database.query(fetch, [id]);

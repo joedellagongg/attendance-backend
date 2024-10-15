@@ -11,6 +11,17 @@ async function getSections() {
     }
 }
 
+async function getSectionbyID(id) {
+    const fetch = `SELECT * FROM section WHERE id = ?`;
+    try {
+        const [results] = await database.query(fetch, [id]);
+        return results;
+    } catch (err) {
+        console.error("Error fetching students:", err);
+        throw err;
+    }
+}
+
 async function addSection(data) {
     const { strand, level, section } = data;
 
@@ -33,6 +44,7 @@ async function addSection(data) {
 }
 
 module.exports = {
+    getSectionbyID,
     getSections,
     addSection,
 };
