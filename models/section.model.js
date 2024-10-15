@@ -1,7 +1,7 @@
 const database = require("../db");
 
 async function getSections() {
-    const fetch = "SELECT * FROM section";
+    const fetch = `SELECT * FROM section`;
     try {
         const [results] = await database.query(fetch);
         return results;
