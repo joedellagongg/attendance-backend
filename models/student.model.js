@@ -16,7 +16,25 @@ async function getStudentsbyID(id) {
 
     console.log("STUDENT GET 1 MODEL: ", id);
 
-    const fetch = `SELECT * FROM studuser WHERE student_id = ?`;
+    const fetch = `SELECT * FROM studuser WHERE section_id = ?`;
+
+    try {
+        const result = await database.query(fetch, [id]);
+        return result[0];
+    } catch (error) {
+        res.status(500).json({
+            message: "BAD",
+            data: error,
+        });
+    }
+}
+
+async function deleteStudentsbyID(id) {
+    // const { id } = data;
+
+    console.log("STUDENT GET 1 MODEL: ", id);
+
+    const fetch = `DELETE FROM studuser WHERE student_id = ?`;
 
     try {
         const result = await database.query(fetch, [id]);

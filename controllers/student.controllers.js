@@ -24,6 +24,19 @@ exports.getStudentbyID = async function (req, res) {
     }
 };
 
+exports.deleteStudentbyID = async function (req, res) {
+    const { id } = req.params;
+
+    try {
+        const students = await student.getStudentsbyID(id);
+        res.json(students);
+    } catch (error) {
+        res.status(500).json({
+            error: "From: [ GET STUDENT ID CONTROLLERS ], Failed to retrieve students",
+        });
+    }
+};
+
 exports.addStudent = async function (req, res) {
     const data = req.body;
     try {
