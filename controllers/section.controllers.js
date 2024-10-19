@@ -6,7 +6,7 @@ exports.getSections = async function (req, res) {
     try {
         const section = await sections.getSections();
         res.json(section);
-        console.log(section);
+        // console.log(section);
     } catch (error) {
         res.status(500).json({
             error: "From: [ GET SECTION CONTROLLERS ], Failed to retrieve sections",

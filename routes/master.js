@@ -19,10 +19,11 @@ const registeredRoute = (app) => {
     app.use("/", main);
     app.use("/login", loginRoute);
     app.use("/add_student", studentRoute);
-    app.use("/student_list", studentRoute);
-    app.use("/student_list/:id", studentRoute);
+    app.use("/students", studentRoute);
+    // app.use("/student_list/:id", studentRoute);
+    // app.use("/student_profile", studentRoute);
     app.use("/get_section", sectionRoute);
-    app.use("/get_section/:id", sectionRoute);
+    // app.use("/get_section/:id", sectionRoute);
     app.use("/add_section", sectionRoute);
 };
 

@@ -17,7 +17,7 @@ async function getSectionbyID(id) {
         const [results] = await database.query(fetch, [id]);
         return results;
     } catch (err) {
-        console.error("Error fetching students:", err);
+        console.error("Error fetching student id:", err);
         throw err;
     }
 }

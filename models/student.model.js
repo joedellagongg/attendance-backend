@@ -11,10 +11,24 @@ async function getStudents() {
     }
 }
 
-async function getStudentsbyID(id) {
-    // const { id } = data;
+async function getStudentbyID(id) {
+    console.log("Fetched 1 Student from Models: ", id);
 
-    console.log("STUDENT GET 1 MODEL: ", id);
+    const fetch = `SELECT * FROM studuser WHERE student_id = ?`;
+
+    try {
+        const result = await database.query(fetch, [id]);
+        return result[0];
+    } catch (error) {
+        res.status(500).json({
+            message: "BAD",
+            data: error,
+        });
+    }
+}
+
+async function getStudentSectionID(id) {
+    // console.log("Fetched SectionID from Student: ", id);
 
     const fetch = `SELECT * FROM studuser WHERE section_id = ?`;
 
@@ -32,14 +46,15 @@ async function getStudentsbyID(id) {
 async function deleteStudentsbyID(id) {
     // const { id } = data;
 
-    console.log("STUDENT GET 1 MODEL: ", id);
+    console.log("Student Deleted from Models: ", id);
 
     const fetch = `DELETE FROM studuser WHERE student_id = ?`;
 
     try {
         const result = await database.query(fetch, [id]);
-        return result[0];
+        return result;
     } catch (error) {
+        console.log(error);
         res.status(500).json({
             message: "BAD",
             data: error,
@@ -50,6 +65,7 @@ async function deleteStudentsbyID(id) {
 async function addStudent(data) {
     const {
         NFCid,
+        urlID,
         uname,
         upass,
         lastName,
@@ -69,28 +85,53 @@ async function addStudent(data) {
         guardianContact,
     } = data;
 
-    const query = `INSERT INTO studuser (nfc_id, username, password, lname, fname, mname, age, birthday, gender, address, email, father, mother, guardian, studcontact, fathercontact, mothercontact, guardiancontact) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+    // console.log(data);
+
+    // console.log({
+    //     NFCid,
+    //     urlID,
+    //     uname,
+    //     upass,
+    //     lastName,
+    //     firstName,
+    //     middleName,
+    //     Age,
+    //     Birthday,
+    //     Gender,
+    //     Address,
+    //     emailAddress,
+    //     fatherName,
+    //     motherName,
+    //     guardianName,
+    //     studentContact,
+    //     fatherContact,
+    //     motherContact,
+    //     guardianContact,
+    // });
+
+    const query = `INSERT INTO studuser (nfc_id, section_id, username, password, lname, fname, mname, age, birthday, gender, address, email, father, mother, guardian, studcontact, fathercontact, mothercontact, guardiancontact) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
 
     try {
         const result = await database.execute(query, [
-            NFCid,
+            NFCid || null,
+            urlID || null,
             uname,
             upass,
-            lastName,
-            firstName,
-            middleName,
-            Age,
-            Birthday,
-            Gender,
-            Address,
-            emailAddress,
-            fatherName,
-            motherName,
-            guardianName,
-            studentContact,
-            fatherContact,
-            motherContact,
-            guardianContact,
+            lastName || null,
+            firstName || null,
+            middleName || null,
+            Age || null,
+            Birthday || null,
+            Gender || null,
+            Address || null,
+            emailAddress || null,
+            fatherName || null,
+            motherName || null,
+            guardianName || null,
+            studentContact || null,
+            fatherContact || null,
+            motherContact || null,
+            guardianContact || null,
         ]);
         console.log("Student added:", result);
         return result;
@@ -101,7 +142,9 @@ async function addStudent(data) {
 }
 
 module.exports = {
-    getStudentsbyID,
+    getStudentbyID,
+    getStudentSectionID,
+    deleteStudentsbyID,
     getStudents,
     addStudent,
 };

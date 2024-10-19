@@ -13,9 +13,10 @@ exports.getStudent = async function (req, res) {
 
 exports.getStudentbyID = async function (req, res) {
     const { id } = req.params;
+    // console.log(id);
 
     try {
-        const students = await student.getStudentsbyID(id);
+        const students = await student.getStudentbyID(id);
         res.json(students);
     } catch (error) {
         res.status(500).json({
@@ -24,15 +25,29 @@ exports.getStudentbyID = async function (req, res) {
     }
 };
 
-exports.deleteStudentbyID = async function (req, res) {
+exports.getStudentSectionID = async function (req, res) {
     const { id } = req.params;
 
     try {
-        const students = await student.getStudentsbyID(id);
+        const students = await student.getStudentSectionID(id);
         res.json(students);
     } catch (error) {
         res.status(500).json({
-            error: "From: [ GET STUDENT ID CONTROLLERS ], Failed to retrieve students",
+            error: "From: [ GET STUDENT SECTION ID CONTROLLERS ], Failed to retrieve students",
+        });
+    }
+};
+
+exports.deleteStudentbyID = async function (req, res) {
+    const { id } = req.params;
+    console.log("delete: ", id);
+
+    try {
+        const students = await student.deleteStudentsbyID(id);
+        res.json(students);
+    } catch (error) {
+        res.status(500).json({
+            error: "From: [ DELETE ID CONTROLLERS ], Failed to delete student",
         });
     }
 };
