@@ -18,13 +18,13 @@ const registeredRoute = (app) => {
     app.use(cors(corsSetting));
     app.use("/", main);
     app.use("/login", loginRoute);
-    app.use("/add_student", studentRoute);
+    // app.use("/add_student", studentRoute);
     app.use("/students", studentRoute);
     // app.use("/student_list/:id", studentRoute);
     // app.use("/student_profile", studentRoute);
-    app.use("/get_section", sectionRoute);
+    app.use("/section", sectionRoute);
     // app.use("/get_section/:id", sectionRoute);
-    app.use("/add_section", sectionRoute);
+    // app.use("/add_section", sectionRoute);
 };
 
 module.exports = registeredRoute;
