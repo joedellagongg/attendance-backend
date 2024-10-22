@@ -43,7 +43,20 @@ async function addSection(data) {
     }
 }
 
+async function deleteSection(id) {
+    console.log("id models delete", id);
+    const fetch = `DELETE FROM section WHERE id = ?`;
+    try {
+        const [results] = await database.query(fetch, [id]);
+        return results;
+    } catch (err) {
+        console.error("Error fetching students:", err);
+        throw err;
+    }
+}
+
 module.exports = {
+    deleteSection,
     getSectionbyID,
     getSections,
     addSection,
