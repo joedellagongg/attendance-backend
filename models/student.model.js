@@ -48,7 +48,7 @@ async function deleteStudentsbyID(id) {
 
     console.log("Student Deleted from Models: ", id);
 
-    const fetch = `DELETE FROM studuser WHERE student_id = ?`;
+    const fetch = `DELETE FROM studuser WHERE student_id IN (?)`;
 
     try {
         const result = await database.query(fetch, [id]);
@@ -85,29 +85,6 @@ async function addStudent(data) {
         guardianContact,
     } = data;
 
-    // console.log(data);
-
-    // console.log({
-    //     NFCid,
-    //     urlID,
-    //     uname,
-    //     upass,
-    //     lastName,
-    //     firstName,
-    //     middleName,
-    //     Age,
-    //     Birthday,
-    //     Gender,
-    //     Address,
-    //     emailAddress,
-    //     fatherName,
-    //     motherName,
-    //     guardianName,
-    //     studentContact,
-    //     fatherContact,
-    //     motherContact,
-    //     guardianContact,
-    // });
 
     const query = `INSERT INTO studuser (nfc_id, section_id, username, password, lname, fname, mname, age, birthday, gender, address, email, father, mother, guardian, studcontact, fathercontact, mothercontact, guardiancontact) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
 
